@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="style.css"/>
+<script src="https://cdn.jsdelivr.net/lodash/4.16.4/lodash.min.js"></script> <!--Not used-->
+</head>
+<body onload="push()">
+<div class="grid-container">
+  <button class="grid-item" id="1" onclick="logic(this.tagName)"></button>
+  <button class="grid-item" id="2" onclick="logic(this.tagName)"></button>
+  <button class="grid-item" id="3"onclick="logic(this.tagName)" ></button>  
+  <button class="grid-item" id="4" onclick="logic(this.tagName)"></button>
+  <button class="grid-item" id="5" onclick="logic(this.tagName)"></button>
+  <button class="grid-item" id="6" onclick="logic(this.tagName)"></button>  
+  <button class="grid-item" id="7" onclick="logic(this.tagName)"></button>
+  <button class="grid-item" id="8" onclick="logic(this.tagName)"></button>
+  <button class="grid-item" id="9" onclick="logic(this.tagName)"></button>  
+  <button class="grid-item" id="10" onclick="logic(this.tagName)"></button>
+  <button class="grid-item" id="11" onclick="logic(this.tagName)"></button>
+  <button class="grid-item" id="12" onclick="logic(this.tagName)"></button>  
+  <button class="grid-item" id="13" onclick="logic(this.tagName)"></button>  
+  <button class="grid-item" id="14" onclick="logic(this.tagName)"></button>
+  <button class="grid-item" id="15" onclick="logic(this.tagName)"></button>
+  <button class="grid-item" id="16" onclick="logic(this.tagName)"></button>  
+</div>
+<button onclick="start()">Start</button>
+<script>
+
+function forEachWithDelay(array, callback, delay) {
+    let i = 0;
+    let interval = setInterval(() => {
+      callback(array[i], i, array);
+      if (++i === array.length) clearInterval(interval);
+    }, delay);
+  }
+
+var randomElement = [];
+
+var a = 1
+var list = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16"]
+var userlist = []
+function push(){
+    list.forEach(function(e){
+      var randomelement = list[Math.floor(Math.random() * list.length)];
+      randomElement.push(randomelement);
+    })
+}
+d = 0;
+function start(){
+  document.getElementById(randomElement[d]).style.backgroundColor = "black";
+}
+
+function logic(tagName) {
+  if (tagName == 'BUTTON') {
+    document.querySelectorAll('button').forEach((e) => {
+    e.onclick = function(e){
+      userlist.push(e.currentTarget.id)
+      if(randomElement[d]==e.currentTarget.id){
+        console.log("nice")
+        logic(this.tagName);
+        d++;
+        document.getElementById(randomElement[d]).style.backgroundColor = "black"
+        document.getElementById(randomElement[d]).onmousemove=function(){
+          document.getElementById(randomElement[d]).style.backgroundColor = "white"
+        }
+        
+      }
+      else if(d==15){
+        
+      }
+      else{ 
+        alert("you lost")
+      }
+  
+    }
+  });
+  
+        }}
+
+  </script>
+</body>
+</html>
